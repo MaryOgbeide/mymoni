@@ -6,11 +6,13 @@ Managing their finance
 Planning financial future
 SOLUTIONS
 
-Track financial actives
-Gives analysis
-Flash cards for learning financial principles.
+1. Track financial actives
+2. Gives analysis
 
-Financial tip for the day.
+APP NAME: MYMONI (font: lobster)
+Flash cards for learning financial principles. (font: philosopher)
+
+Financial tip for the day.(font: philosopher)
 
 Project someone's financial future based on earnings, spending habits, and financial goals.
 
