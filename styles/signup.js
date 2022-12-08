@@ -7,7 +7,7 @@ export const styles=StyleSheet.create({
       //paddingHorizontal:1,
       alignItems:"center",
       backgroundColor:Theme.colors.orange300,
-      marginTop:Platform.OS === 'android'? StatusBar.currentHeight: null,
+      //marginTop:Platform.OS === 'android'? StatusBar.currentHeight: null,
    },
    brand:{
     alignItems:'center',
