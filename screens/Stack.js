@@ -1,5 +1,6 @@
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import { SignIn } from "./Signin";
+import { SignUp } from "./Signup";
 import { About } from "./About";
 import { Home } from "./HomeScreen";
 import { AddExpense } from "./AddExpense";
@@ -11,9 +12,10 @@ const Stack = createNativeStackNavigator();
 
 export function StackNavigator (){
     return (
-        <Stack.Navigator initialRouteName= 'Favs'  options={{headerShown:false}}>
+        <Stack.Navigator initialRouteName= 'Sign Up'  options={{headerShown:true}}>
             <Stack.Screen name="Home" component={Home}/> 
-            <Stack.Screen name="SignIn" component={SignIn}/>
+            <Stack.Screen name="Sign In" component={SignIn}/>
+            <Stack.Screen name="Sign Up" component={SignUp}/>
             <Stack.Screen name="About" component={About}/>
             <Stack.Screen name="Add Expense" component={AddExpense}/>
             <Stack.Screen name="Add Income" component={AddIncome} options={{headerShown:true}}/>

@@ -11,40 +11,27 @@ import { styles } from '../styles/favourites';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
 export function Favourites ({navigation}){
-        const [appIsReady, setAppIsReady] = useState(false);
-
-        useEffect(() => {
-        async function prepare() {
-            try {
-                    await Font.loadAsync({Lobster_400Regular,Philosopher_700Bold});
-                    await new Promise(resolve => setTimeout(resolve, 2000));
-            } catch (e) {
-                console.warn(e);
-            } finally {
-                setAppIsReady(true);
-            }
-            }
-
-        prepare();
-    }, []);
-
-    const onLayoutRootView = useCallback(async () => {
-            if (appIsReady) {
-            
-            await SplashScreen.hideAsync();
-            }
-        },  [appIsReady]);
-
-        if (!appIsReady) {
-            return null;
-        }
-
     return(
-        <SafeArea>
-            <FlatList>
-                <Text style={{fontSize:20}}>My Favourites</Text>
-                
-            </FlatList>
-        </SafeArea>
+        <View style={styles.container}>
+            <View>
+                <Text>My Favourites</Text>
+                <FontAwesomeIcon icon={faHeart} color={''} size={''}></FontAwesomeIcon>
+            </View>
+
+            <View>
+            <View style={styles.tipOfDay}>
+              <View style={styles.tipImgBlock}>
+                    <Image style={styles.tipOfDayImg} source={require('../assets/piggy-bank.jpg')}/>
+              </View>
+              <View style={styles.tip}>
+                    <Text style={styles.tipText}>By age 25, you should have saved at least 0.5x your annual expenses. The more the better. In other words, If you spend $50,000 a year, you should have about $25,000 in your savings</Text>
+                    <View style={styles.tipOptions}>
+                        <Text style={styles.preTips}>Previous tips</Text>
+                        <FontAwesomeIcon icon={faHeart} color={Theme.colors.brown500} size={Theme.fonts.fontSizePoint.caption}/>
+                    </View>
+              </View>
+            </View>
+            </View>
+        </View>
     )
 }
