@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { firebaseApiKey } from "../secrets/apikey";
+import { firebaseApiKey } from "../secrets/firebaseapikey.secret";
 import { getFirestore } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth'
 // TODO: Add SDKs for Firebase products that you want to use

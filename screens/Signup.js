@@ -8,7 +8,9 @@ import { Lobster_400Regular } from '@expo-google-fonts/lobster';
 import { Philosopher_700Bold } from '@expo-google-fonts/philosopher';
 import { Theme } from '../themes/theme';
 import { Formik } from 'formik';
-import * as yup from 'yup'
+import * as yup from 'yup';
+import { authentication } from '../Firebase/firebase';
+import { createUserWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
 
 const Rules = yup.object({
     fName:yup.string()
@@ -21,16 +23,13 @@ const Rules = yup.object({
     .max(25,'not more than 25 characters'),
     email:yup.string()
     .required('this field is required')
-    .min(2,'write up to 2 characters')
-    .max(25,'not more than 25 characters'),
+    .min(2,'write up to 2 characters'),
     password:yup.string()
     .required('this field is required')
-    .min(2,'write up to 2 characters')
-    .max(25,'not more than 25 characters'),
-    passwordConfirmation:yup.string()
-    .required('this field is required')
-    .min(2,'write up to 2 characters')
-    .max(25,'not more than 25 characters'),
+    .min(8,'write up to 8 characters')
+    .oneOf([yup.ref('passwordConfirmation'),null],'password must match'),
+    
+    
 
     phoneNumber:yup.number()
     .min(11)
@@ -88,7 +87,15 @@ export function SignUp ({navigation}){
                 }}
 
                 onSubmit={(values,actions) => {
-                    console.log(values.fName,values.phoneNumber,);
+                    createUserWithEmailAndPassword(authentication,values.email,values.password)
+                    .then(() => {
+                        onAuthStateChanged(authentication,(user) => {
+                            console.log(user.uid)
+                        })
+                    })
+                    .catch((error) => {
+                        console.log(error)
+                    });
 
                     actions.resetForm(); //clear inputs
                 }}
