@@ -1,4 +1,4 @@
-import {View, Text, Image, FlatList} from 'react-native';
+import {View, Text, Image, FlatList, TouchableOpacity} from 'react-native';
 import { SafeArea } from '../utilities/AreaView';
 import * as Font from 'expo-font';
 import { Lobster_400Regular } from '@expo-google-fonts/lobster';
@@ -8,30 +8,118 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { Theme } from '../themes/theme';
 import {Ionicons} from '@expo/vector-icons';
 import { styles } from '../styles/favourites';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faMinusCircle} from '@fortawesome/free-solid-svg-icons';
+import { faTrash  } from '@fortawesome/free-regular-svg-icons';
 
 export function Favourites ({navigation}){
+    const [appIsReady, setAppIsReady] = useState(false);
+
+    useEffect(() => {
+    async function prepare() {
+      try {
+          await Font.loadAsync({Lobster_400Regular,Philosopher_700Bold});
+          await new Promise(resolve => setTimeout(resolve, 2000));
+      } catch (e) {
+        console.warn(e);
+      } finally {
+        setAppIsReady(true);
+      }
+    }
+
+    prepare();
+  }, []);
+
+  const onLayoutRootView = useCallback(async () => {
+    if (appIsReady) {
+     
+      await SplashScreen.hideAsync();
+    }
+  },  [appIsReady]);
+
+  if (!appIsReady) {
+    return null;
+  }
+
     return(
+        
+        
         <View style={styles.container}>
-            <View>
-                <Text>My Favourites</Text>
-                <FontAwesomeIcon icon={faHeart} color={''} size={''}></FontAwesomeIcon>
+
+            <View style={styles.head}>
+                <Text style={styles.brandText}>My Favourites</Text>
+                <FontAwesomeIcon icon={faHeart} color={'red'} size={30}></FontAwesomeIcon>
             </View>
 
-            <View>
-            <View style={styles.tipOfDay}>
-              <View style={styles.tipImgBlock}>
-                    <Image style={styles.tipOfDayImg} source={require('../assets/piggy-bank.jpg')}/>
-              </View>
-              <View style={styles.tip}>
-                    <Text style={styles.tipText}>By age 25, you should have saved at least 0.5x your annual expenses. The more the better. In other words, If you spend $50,000 a year, you should have about $25,000 in your savings</Text>
-                    <View style={styles.tipOptions}>
-                        <Text style={styles.preTips}>Previous tips</Text>
-                        <FontAwesomeIcon icon={faHeart} color={Theme.colors.brown500} size={Theme.fonts.fontSizePoint.caption}/>
+            <View style={styles.tipBlock}>
+                <View style={styles.tipImage}>
+                    <Image source={require('../assets/piggy-bank.jpg')}
+                    style={styles.image}></Image>
+                </View>
+                <View style={styles.favs}>
+                    <TouchableOpacity style={styles.remove}>
+                        <FontAwesomeIcon icon={faMinusCircle} color={'#DC3535'} size={20}></FontAwesomeIcon>
+                    </TouchableOpacity>
+                    <View style={styles.tipbox}>
+                        <Text style={styles.favTip}>
+                            Instead of spending on something you might not need, 
+                            take 30 days to think about it. After 30 days, 
+                            if you still want it, feel free to go for it
+                        </Text>
                     </View>
-              </View>
+                    <View style={styles.date}>
+                        <Text style={styles.tipDates}>6-12-2022</Text>
+                    </View>
+                </View>
             </View>
+
+            <View style={styles.tipBlock2}>
+                <View style={styles.tipImage}>
+                    <Image source={require('../assets/shopping-basket.jpg')}
+                    style={styles.image}></Image>
+                </View>
+                <View style={styles.favs}>
+                    <TouchableOpacity style={styles.remove}>
+                        <FontAwesomeIcon icon={faMinusCircle} color={'#DC3535'} size={20}></FontAwesomeIcon>
+                    </TouchableOpacity>
+                    <View style={styles.tipbox}>
+                        <Text style={styles.favTip2}>
+                            Instead of spending on something you might not need, 
+                            take 30 days to think about it. After 30 days, 
+                            if you still want it, feel free to go for it.
+                        </Text>
+                    </View>
+                    <View style={styles.date}>
+                        <Text style={styles.tipDates}>6-12-2022</Text>
+                    </View>
+                </View>
             </View>
+
+            <View style={styles.tipBlock3}>
+                <View style={styles.tipImage}>
+                    <Image source={require('../assets/shopping-bags.jpg')}
+                    style={styles.image}></Image>
+                </View>
+                <View style={styles.favs}>
+                    <TouchableOpacity style={styles.remove}>
+                        <FontAwesomeIcon icon={faMinusCircle} color={'#DC3535'} size={20}></FontAwesomeIcon>
+                    </TouchableOpacity>
+                    <View style={styles.tipbox}>
+                        <Text style={styles.favTip3}>
+                            Instead of spending on something you might not need, 
+                            take 30 days to think about it. After 30 days, 
+                            if you still want it, feel free to go for it.
+                        </Text>
+                    </View>
+                    <View style={styles.date}>
+                        <Text style={styles.tipDates}>6-12-2022</Text>
+                    </View>
+                </View>
+            </View>
+
+
         </View>
-    )
+        
+        
+        
+        )
 }

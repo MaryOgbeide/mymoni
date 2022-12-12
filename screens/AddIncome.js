@@ -62,9 +62,9 @@ export function AddIncome (){
                             value={values.amount}/>
                             <Text style={{color:'red',
                                  marginBottom:Theme.sizes[2],
-                                 display:!touched.description && !errors.description ? 'none' : null
+                                 display:!touched.amount && !errors.amount ? 'none' : null
                                 }}>
-                                {touched.description && errors.description}
+                                {touched.amount && errors.amount}
                             </Text>
 
                             <TextInput

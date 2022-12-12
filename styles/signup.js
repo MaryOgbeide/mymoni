@@ -58,23 +58,23 @@ button2:{
     backgroundColor:Theme.colors.orange900,
     width:320
    },
-   firstname:{
-    marginBottom:8
-   },
-   lastname:{
-    marginBottom:8
-   },
-   phone:{
-    marginBottom:8
-   },
-   email:{
-    marginBottom:8
-   },
-   password:{
-    marginBottom:8
-   },
-   confirm:{
-    marginBottom:8
-   },
+   // firstname:{
+   //  marginBottom:5
+   // },
+   // lastname:{
+   //  marginBottom:5
+   // },
+   // phone:{
+   //  marginBottom:5
+   // },
+   // email:{
+   //  marginBottom:5
+   // },
+   // password:{
+   //  marginBottom:5
+   // },
+   // confirm:{
+   //  marginBottom:5
+   // },
    
 })
