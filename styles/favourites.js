@@ -44,6 +44,14 @@ export const styles= StyleSheet.create({
         margin:10,
         padding:10,
     },
+    tipBlock4:{
+        flex:2,
+        backgroundColor:Theme.colors.redAltYellow,
+        flexDirection:'row',
+        borderRadius:25,
+        margin:10,
+        padding:10,
+    },
     tipImage:{
         flex:3,
         marginRight:10
@@ -73,7 +81,11 @@ export const styles= StyleSheet.create({
    },
    favTip3:{
         fontFamily:'Philosopher_700Bold',
-        color:Theme.colors.purple900
+        //color:Theme.colors.purple00
+   },
+   favTip4:{
+        fontFamily:'Philosopher_700Bold',
+        color:Theme.colors.purple700
    },
    date:{
     //flex:2,

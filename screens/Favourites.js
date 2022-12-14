@@ -9,7 +9,7 @@ import { Theme } from '../themes/theme';
 import {Ionicons} from '@expo/vector-icons';
 import { styles } from '../styles/favourites';
 import { faHeart, faMinusCircle} from '@fortawesome/free-solid-svg-icons';
-import { faTrash  } from '@fortawesome/free-regular-svg-icons';
+import { favList } from '../components/favlist';
 
 export function Favourites ({navigation}){
     const [appIsReady, setAppIsReady] = useState(false);
@@ -40,9 +40,8 @@ export function Favourites ({navigation}){
     return null;
   }
 
+  
     return(
-        
-        
         <View style={styles.container}>
 
             <View style={styles.head}>
@@ -50,7 +49,13 @@ export function Favourites ({navigation}){
                 <FontAwesomeIcon icon={faHeart} color={'red'} size={30}></FontAwesomeIcon>
             </View>
 
-            <View style={styles.tipBlock}>
+            <View>
+            <FlatList
+                 data={favList}
+                 renderItem={({item}) => {
+                    return(
+                        <>
+                            <View style={styles.tipBlock}>
                 <View style={styles.tipImage}>
                     <Image source={require('../assets/piggy-bank.jpg')}
                     style={styles.image}></Image>
@@ -61,13 +66,11 @@ export function Favourites ({navigation}){
                     </TouchableOpacity>
                     <View style={styles.tipbox}>
                         <Text style={styles.favTip}>
-                            Instead of spending on something you might not need, 
-                            take 30 days to think about it. After 30 days, 
-                            if you still want it, feel free to go for it
+                            {item.tips}
                         </Text>
                     </View>
                     <View style={styles.date}>
-                        <Text style={styles.tipDates}>6-12-2022</Text>
+                        <Text style={styles.tipDates}>{item.date}</Text>
                     </View>
                 </View>
             </View>
@@ -83,13 +86,11 @@ export function Favourites ({navigation}){
                     </TouchableOpacity>
                     <View style={styles.tipbox}>
                         <Text style={styles.favTip2}>
-                            Instead of spending on something you might not need, 
-                            take 30 days to think about it. After 30 days, 
-                            if you still want it, feel free to go for it.
+                            {item.tips}
                         </Text>
                     </View>
                     <View style={styles.date}>
-                        <Text style={styles.tipDates}>6-12-2022</Text>
+                        <Text style={styles.tipDates}>{item.date}</Text>
                     </View>
                 </View>
             </View>
@@ -105,21 +106,42 @@ export function Favourites ({navigation}){
                     </TouchableOpacity>
                     <View style={styles.tipbox}>
                         <Text style={styles.favTip3}>
-                            Instead of spending on something you might not need, 
-                            take 30 days to think about it. After 30 days, 
-                            if you still want it, feel free to go for it.
+                            {item.tips}
                         </Text>
                     </View>
                     <View style={styles.date}>
-                        <Text style={styles.tipDates}>6-12-2022</Text>
+                        <Text style={styles.tipDates}>{item.date}</Text>
                     </View>
                 </View>
             </View>
 
+            <View style={styles.tipBlock4}>
+                <View style={styles.tipImage}>
+                    <Image source={require('../assets/blue-piggy.jpg')}
+                    style={styles.image}></Image>
+                </View>
+                <View style={styles.favs}>
+                    <TouchableOpacity style={styles.remove}>
+                        <FontAwesomeIcon icon={faMinusCircle} color={'#DC3535'} size={20}></FontAwesomeIcon>
+                    </TouchableOpacity>
+                    <View style={styles.tipbox}>
+                        <Text style={styles.favTip4}>
+                            {item.tips}
+                        </Text>
+                    </View>
+                    <View style={styles.date}>
+                        <Text style={styles.tipDates}>{item.date}</Text>
+                    </View>
+                </View>
+            </View>
+                        </>
+                    )
+            }}/>
+            </View>
+            
+
 
         </View>
-        
-        
         
         )
 }

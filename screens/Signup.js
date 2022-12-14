@@ -1,5 +1,6 @@
 import { SafeArea } from '../utilities/AreaView';
-import { useState, useEffect,useCallback } from 'react';
+import { useState, useEffect,useCallback, useContext } from 'react';
+import { AppContext } from '../globals/AppContext';
 import { View, Text, TextInput, ScrollView} from 'react-native';
 import { Button } from 'react-native-paper';
 import { styles } from '../styles/signup';
@@ -37,6 +38,9 @@ const Rules = yup.object({
 })
 
 export function SignUp ({navigation}){
+    const {email,setEmail,uid,setUid}= useContext(AppContext);
+
+
     const [appIsReady, setAppIsReady] = useState(false);
     
         useEffect(() => {
@@ -91,6 +95,7 @@ export function SignUp ({navigation}){
                     .then(() => {
                         onAuthStateChanged(authentication,(user) => {
                             console.log(user.uid)
+                            
                         })
                     })
                     .catch((error) => {
