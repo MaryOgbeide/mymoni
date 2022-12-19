@@ -56,7 +56,11 @@ function HomeScreen({navigation}){
           <View style={styles.header}>
             <View style={styles.nav}>
                 <Text style={styles.brandText}>mymoni</Text>
-              <View style={styles.profileOutline}><Image style={styles.userPix} source={require('../assets/profile-pix.jpg')}/></View>
+              <View style={styles.profileOutline}>
+                <TouchableOpacity onPress={() => navigation.navigate('My Profile')}>
+                  <Image style={styles.userPix} source={require('../assets/profile-pix.jpg')}/>
+                </TouchableOpacity>
+              </View>
             </View>
             <View style={styles.tipOfDay}>
               <View style={styles.tipImgBlock}>

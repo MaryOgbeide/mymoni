@@ -3,7 +3,7 @@ import { useState, useEffect,useCallback, useContext } from 'react';
 import { AppContext } from '../globals/AppContext';
 import { View, Text, TextInput, ScrollView} from 'react-native';
 import { Button } from 'react-native-paper';
-import { styles } from '../styles/signup';
+import { styles } from '../styles/signin';
 import * as Font from 'expo-font';
 import { Lobster_400Regular } from '@expo-google-fonts/lobster';
 import { Philosopher_700Bold } from '@expo-google-fonts/philosopher';
@@ -38,7 +38,7 @@ const Rules = yup.object({
 })
 
 export function SignUp ({navigation}){
-    const {email,setEmail,uid,setUid}= useContext(AppContext);
+    const {uid,setUid}= useContext(AppContext);
 
 
     const [appIsReady, setAppIsReady] = useState(false);
@@ -94,7 +94,8 @@ export function SignUp ({navigation}){
                     createUserWithEmailAndPassword(authentication,values.email,values.password)
                     .then(() => {
                         onAuthStateChanged(authentication,(user) => {
-                            console.log(user.uid)
+                            setUid(user.uid);
+                            navigation.navigate('Home');
                             
                         })
                     })
@@ -175,7 +176,8 @@ export function SignUp ({navigation}){
                                     multiline={true}
                                     onChangeText={handleChange('password')}
                                     onBlur={handleBlur('password')}
-                                    value={values.password}/>
+                                    value={values.password}
+                                    secureTextEntry={true}/>
                                 <Text style={{color:'red',
                                     display:!touched.password && !errors.password ? 'none' : null
                                     }}>
@@ -190,7 +192,8 @@ export function SignUp ({navigation}){
                                     multiline={true}
                                     onChangeText={handleChange('passwordConfirmation')}
                                     onBlur={handleBlur('passwordConfirmation')}
-                                    value={values.passwordConfirmation} />
+                                    value={values.passwordConfirmation} 
+                                    secureTextEntry={true}/>
                                 <Text style={{color:'red',
                                     display:!touched.passwordConfirmation && !errors.passwordConfirmation ? 'none' : null
                                     }}>
@@ -201,9 +204,9 @@ export function SignUp ({navigation}){
 
                             </View>
                             <Button mode='contained'  onPress={handleSubmit} 
-                            style={styles.button}><Text style={styles.button}>Sign Up</Text></Button>
+                            style={styles.button}>Sign Up</Button>
                             <Button mode='contained' onPress={() => navigation.navigate('Sign In')} style={styles.button2}>
-                                <Text style={styles.button2}>I already have an account</Text></Button>
+                                I already have an account</Button>
                         </>
                     )}
                 </Formik>

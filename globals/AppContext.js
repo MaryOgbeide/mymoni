@@ -21,14 +21,14 @@ const AppContext = createContext();
 
 function AppProvider ({children}){
     const [email,setEmail] = useState('');
-    const [uid,setUid] = useState ('')
+    const [uid,setUid] = useState (null)
     const [fullName, setFullName] = useState('');
 
     return (
-        <AppContext.Provider value={{email,setEmail,uid,setUid}}>
+        <AppContext.Provider value={{email,setEmail,fullName,setFullName,uid,setUid}}>
             {children}
         </AppContext.Provider>
     )
 }
 
-export {AppContext, AppProvider, FirebaseUser}
+export {AppContext, AppProvider}

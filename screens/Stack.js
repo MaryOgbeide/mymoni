@@ -7,6 +7,8 @@ import { AddExpense } from "./AddExpense";
 import { AddIncome } from "./AddIncome";
 import { Quizzes } from "./Quizzes";
 import { Favourites } from "./Favourites";
+import { Profile } from "./Profile";
+import { History } from "./History";
 
 const Stack = createNativeStackNavigator();
 
@@ -21,6 +23,8 @@ export function StackNavigator (){
             <Stack.Screen name="Add Income" component={AddIncome}/>
             <Stack.Screen name="Quizzes" component={Quizzes}/>
             <Stack.Screen name="Favs" component={Favourites}/>
+            <Stack.Screen name="My Profile" component={Profile}/>
+            <Stack.Screen name="History" component={History}/>
         </Stack.Navigator>
     )
 }
