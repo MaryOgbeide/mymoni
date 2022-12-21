@@ -1,8 +1,10 @@
 import { StyleSheet } from "react-native";
+import { Theme } from "../themes/theme";
 
 export const styles = StyleSheet.create({
     container:{
         flex:1,
+        margin:20
     },
     top:{
         flexDirection:'row',
@@ -30,7 +32,7 @@ export const styles = StyleSheet.create({
         borderLeftWidth:2,
         paddingLeft:50,
         height:90,
-        borderColor:'grey',
+        borderColor:Theme.colors.orange700,
         justifyContent:'center',
         marginRight:40
     },
@@ -50,15 +52,25 @@ export const styles = StyleSheet.create({
         fontSize:30,
         color:'grey',
     },
-    tab:{
-        
+    item:{
+        flexDirection:'row',
+        alignItems:'center',
+        justifyContent:'space-evenly',
+    },
+    item1:{
+        flexDirection:'row',
+        alignItems:'center',
+        justifyContent:'space-evenly',
+        marginRight:70
     },
     menu:{
         flexDirection:'row',
-        alignItems:'center'
+        alignItems:'center',
+        justifyContent:'space-evenly',
+        marginBottom:20
     },
     medal:{
-        backgroundColor:'grey',
+        backgroundColor:Theme.colors.brown500,
         borderRadius:100,
         padding:8,
     },
@@ -68,15 +80,16 @@ export const styles = StyleSheet.create({
     },
     right:{
         width:25,
-        height:25
+        height:25,
     },
     rightIcon:{
-        backgroundColor:'grey',
+        backgroundColor:Theme.colors.brown500,
         padding:8,
-        borderRadius:10
+        borderRadius:12,
     },
     list:{
         fontSize:20,
         fontFamily:'Philosopher_700Bold',
+        marginLeft:20
     }
 })

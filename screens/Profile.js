@@ -4,11 +4,7 @@ import * as Font from 'expo-font';
 import { Lobster_400Regular } from '@expo-google-fonts/lobster';
 import { Philosopher_700Bold } from '@expo-google-fonts/philosopher';
 import { SafeArea } from '../utilities/AreaView';
-import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
-import { faChevronCircleRight } from '@fortawesome/free-solid-svg-icons';
 import { Theme } from '../themes/theme';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {Ionicons} from '@expo/vector-icons';
 import { styles } from '../styles/profile';
 import { AppContext } from "../globals/AppContext";
 import { signOut } from "firebase/auth";
@@ -66,22 +62,51 @@ export function Profile ({navigation}){
                 <Text style={styles.lName}>Ogbeide</Text>
               </View>
 
-              <View style={styles.tab}>
+          
                 <View style={styles.menu}>
-                  <View style={styles.medal}>
-                    <Image style={styles.badge} source={require('../assets/medal.png')}/>
-                  </View>
-                  <View>
-                    <Text style={styles.list}>Badge</Text>
+                  <View style={styles.item1}>
+                    <View style={styles.medal}>
+                      <Image style={styles.badge} source={require('../assets/medal.png')}/>
+                    </View>
+                    <Text style={styles.list}>Badges</Text>
                   </View>
                   <View style={styles.rightIcon}>
                     <Image style={styles.right} source={require('../assets/right-arrow.png')}/>
                   </View>
                 </View>
-              </View>
+            
+
+              
+                <View style={styles.menu}>
+                  <View style={styles.item}>
+                    <View style={styles.medal}>
+                      <Image style={styles.badge} source={require('../assets/phone-call.png')}/>
+                    </View>
+                    <Text style={styles.list}>Book a session</Text>
+                  </View>
+                  <View style={styles.rightIcon}>
+                    <Image style={styles.right} source={require('../assets/right-arrow.png')}/>
+                  </View>
+                </View>
+              
+
+              
+                <View style={styles.menu}>
+                  <View style={styles.item}>
+                    <View style={styles.medal}>
+                      <Image style={styles.badge} source={require('../assets/user.png')}/>
+                    </View>
+                    <Text style={styles.list}>Update profile</Text>
+                  </View>
+                  <View style={styles.rightIcon}>
+                    <Image style={styles.right} source={require('../assets/right-arrow.png')}/>
+                  </View>
+                </View>
+              
 
               <Button
               mode='contained'
+              marginTop={50}
               contentStyle={{paddingVertical:Theme.sizes[2]}}
               onPress={() => {
                 signOut(authentication);
