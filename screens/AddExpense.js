@@ -1,4 +1,4 @@
-import {View, Text} from 'react-native';
+import {View, Text, Alert} from 'react-native';
 import {SafeArea} from '../utilities/AreaView';
 import { styles } from '../styles/addexpense';
 import { Theme } from '../themes/theme';
@@ -6,7 +6,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faTurnUp } from '@fortawesome/free-solid-svg-icons';
 import {TextInput, Button} from 'react-native-paper';
 import { Formik } from 'formik';
-import * as yup from 'yup'
+import * as yup from 'yup';
+import { db } from '../Firebase/firebase';
+import { addDoc, collection } from 'firebase/firestore';
+import { AppContext } from '../globals/AppContext';
+import { useContext } from 'react';
 
 const formRules = yup.object({
     amount:yup.number()
@@ -20,6 +24,8 @@ const formRules = yup.object({
 })
 
 export function AddExpense (){
+    const { uid } = useContext(AppContext);
+
     return(
         <SafeArea>
             <View style={styles.container}>
@@ -38,7 +44,22 @@ export function AddExpense (){
                 }}
 
                 onSubmit={(values,actions) => {
-                    console.log(values.amount,values.description);
+                    const now = new Date();
+                    const timestamp = now.getTime();
+
+                    addDoc(collection(db,'transactions'),{
+                        amount:values.amount,
+                        transType: 'Expense',
+                        desc:values.description,
+                        userUID:uid,
+                        eventTime:timestamp
+                    })
+                    .then(() => Alert.alert(
+                        'Status',
+                        `You have successfully filed an expense of N${values.amount}`,
+                        [{text:'Okay'}]
+                    ))
+                    .catch((error) => console.log(error))
 
                     actions.resetForm(); //clear inputs
                 }}
