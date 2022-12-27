@@ -10,6 +10,7 @@ import { Philosopher_700Bold } from '@expo-google-fonts/philosopher';
 import { Theme } from '../themes/theme';
 import { Formik } from 'formik';
 import * as yup from 'yup';
+import { Alert } from 'react-native';
 import { authentication } from '../Firebase/firebase';
 import { signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
 
@@ -85,9 +86,13 @@ export function SignIn ({navigation}){
                             
                         })
                     })
-                    .catch((error) => {
-                        console.log(error)
-                    });
+                    .catch((error) => 
+                        console.log(error),
+                        // Alert.alert(
+                        //     'Status',
+                        //     'Email or Password incorrect',
+                        //     [{text:'Okay'}]),
+                     );
 
                     actions.resetForm(); //clear inputs
                 }}

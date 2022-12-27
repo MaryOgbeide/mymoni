@@ -6,10 +6,14 @@ import { Button, TextInput } from 'react-native-paper';
 import { db } from '../Firebase/firebase';
 import { onSnapshot, collection, query, where, orderBy } from 'firebase/firestore';
 import { styles } from '../styles/history';
+import { HistoryTemplate } from '../components/historytype';
+
 
 export function History({navigation}){
     const {uid} = useContext(AppContext);
-    const [history,setHistory] = useState([])
+    const [history,setHistory] = useState([]);
+
+    
 
     //read all transactions specific to user
     const queryRef = collection(db,'transactions');
@@ -24,23 +28,16 @@ export function History({navigation}){
             })
         })
     },[]);
-    console.log(history);
+    
 
     return(
         <SafeArea>
             <View style={styles.container}>
-                {/* <View style={styles.transHeadLine}>
-                    <Text style={styles.transHis}>Transaction History</Text>
-                </View>
-
-                <View style={styles.transOptions}>
-                    <Button style={styles.expense} mode='contained'onPress={() => navigation.navigate('History')}>Expenses</Button>
-                    <Button style={styles.income} mode='contained'onPress={() => navigation.navigate('Incomehistory')}>Income</Button>
-                </View> */}
+                
                 <View style={styles.historyBlock}>
                     <FlatList
                         data={history}
-                        renderItem={({item}) =>{
+                        renderItem={({item}) =>{ 
                             return(
                                 <TouchableOpacity style={styles.transDetails}>
                                     <View style={styles.expenseInfo}>
@@ -52,18 +49,15 @@ export function History({navigation}){
                                 </TouchableOpacity>
                             )
                         }}
-                        //key={({item}) => item}
+                        key={({item}) => item.transactionid}
+
+                        
                     />
+                {/* {console.log(history)} */}
                 </View>
                 
             </View>
-            {/* <View>
-                <Text>{fullName}</Text>
-                <TextInput placeholder='Enter your new email' 
-                onChangeText={(text)=> setEmail(text)}/>
-
-                <Button mode='contained'>{email}</Button>
-            </View> */}
+            
         </SafeArea>
     )
 }

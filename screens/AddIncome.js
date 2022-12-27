@@ -48,11 +48,15 @@ export function AddIncome (){
                     const now = new Date();
                     const timestamp = now.getTime();
 
+                    //generate a unique id for each transactions,
+                    const transactionid = 'INC'+ Math.round(Math.random()*100000000)
+
                     addDoc(collection(db,'transactions'),{
                         amount:values.amount,
                         transType: 'Income',
                         desc:values.description,
                         userUID:uid,
+                        transactionID: transactionid,
                         eventTime:timestamp
                     })
                     .then(() => Alert.alert(

@@ -1,5 +1,4 @@
 import {createContext, useState } from 'react';
-import { SignUp } from '../screens/Signup';
 import { authentication } from '../Firebase/firebase';
 import { createUserWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
 

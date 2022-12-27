@@ -47,11 +47,14 @@ export function AddExpense (){
                     const now = new Date();
                     const timestamp = now.getTime();
 
+                    const transactionid = 'EXP'+ Math.round(Math.random()*100000000)
+
                     addDoc(collection(db,'transactions'),{
                         amount:values.amount,
                         transType: 'Expense',
                         desc:values.description,
                         userUID:uid,
+                        transactionID: transactionid,
                         eventTime:timestamp
                     })
                     .then(() => Alert.alert(
