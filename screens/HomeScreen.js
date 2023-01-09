@@ -15,12 +15,7 @@ import {Favourites} from '../screens/Favourites';
 import {History} from '../screens/History';
 import {Ionicons} from '@expo/vector-icons';
 
-//update theme.js
-//update homescreen.js
-//create folder "carousel" in assets
-//add assets/piggy-bank.jpg
-//add assets/carousel/never_give_up.jpg
-//update Homescreen.js
+
 
 function HomeScreen({navigation}){
     const [appIsReady, setAppIsReady] = useState(false);

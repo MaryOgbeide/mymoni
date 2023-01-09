@@ -9,12 +9,13 @@ import { Quizzes } from "./Quizzes";
 import { Favourites } from "./Favourites";
 import { Profile } from "./Profile";
 import { History } from "./History";
+import { FlashCards } from "./FlashCards";
 
 const Stack = createNativeStackNavigator();
 
 export function StackNavigator (){
     return (
-        <Stack.Navigator initialRouteName= 'Sign In'>
+        <Stack.Navigator initialRouteName= 'Flashcards'>
             <Stack.Screen name="Home" component={Home}/> 
             <Stack.Screen name="Sign In" component={SignIn}/>
             <Stack.Screen name="Sign Up" component={SignUp}/>
@@ -25,6 +26,7 @@ export function StackNavigator (){
             <Stack.Screen name="Favs" component={Favourites}/>
             <Stack.Screen name="My Profile" component={Profile}/>
             <Stack.Screen name="History" component={History}/>
+            <Stack.Screen name="Flashcards" component={FlashCards}/>
         </Stack.Navigator>
     )
 }

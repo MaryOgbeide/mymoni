@@ -29,8 +29,6 @@ const Rules = yup.object({
     .required('this field is required')
     .min(8,'write up to 8 characters')
     .oneOf([yup.ref('passwordConfirmation'),null],'password must match'),
-    
-    
 
     phoneNumber:yup.number()
     .min(11)

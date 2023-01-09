@@ -10,11 +10,8 @@ import { AppContext } from "../globals/AppContext";
 import { signOut } from "firebase/auth";
 import { Button } from 'react-native-paper';
 import { authentication } from '../Firebase/firebase';
-import { faStar } from '@fortawesome/free-regular-svg-icons';
-import { faChevronRight, faPhone, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faChevronRight, faPhone, faUser, faStar } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-
-
 
 export function Profile ({navigation}){
     const [appIsReady, setAppIsReady] = useState(false);
@@ -100,7 +97,8 @@ export function Profile ({navigation}){
               {/* <Image style={styles.right} source={require('../assets/right-arrow.png')}/> */}
               <FontAwesomeIcon
                 icon={faChevronRight}
-                size={25}></FontAwesomeIcon>
+                size={25}>
+                </FontAwesomeIcon>
             </View>
           </View>
 
