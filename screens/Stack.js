@@ -15,7 +15,7 @@ const Stack = createNativeStackNavigator();
 
 export function StackNavigator (){
     return (
-        <Stack.Navigator initialRouteName= 'Flashcards'>
+        <Stack.Navigator initialRouteName= 'Home'>
             <Stack.Screen name="Home" component={Home}/> 
             <Stack.Screen name="Sign In" component={SignIn}/>
             <Stack.Screen name="Sign Up" component={SignUp}/>
